@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<#include "resource.html">
+<link href="../../static/css/reset.css" rel="stylesheet" type="text/css"/>
+<link href="../../static/css/index.css" rel="stylesheet" type="text/css"/>
+<link href="../../static/css/bookRecommendPage.css" rel="stylesheet" type="text/css"/>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="top_line">
+	  <div class="top_heart">
+		<ul style="list-style-type:none;">
+            	<li style="float:left">说书</li>
+            	<#if session_user??>
+            	<li style="float:right"><a href="/user/logout.html">退出登录</a></li>
+            	<li style="float:right; margin-right:20px"><a href="/member/main.html">进入个人中心</a></li>
+            	<li style="float:right; margin-right:20px">你好，${session_user.username}</li>
+                <#else>
+                <li style="float:right"><a href="/user/login.html">登录</a></li>
+                <li style="float:right; margin-right:20px"><a href="/user/register.html">注册</a></li>
+                </#if>
+          </ul>
+		</div>
+	</div>
+	<form action="/member/addRecommendBook.html" method="post" class="basic-grey" enctype="multipart/form-data">
+		<h1>说书之用户推荐书本
+		</h1>
+		<label>
+		<span>书名 :</span>
+		<input id="title" type="text" name="title" <#if book??>value="${book.title!}"</#if> placeholder="请输入书名" />
+		</label>
+		<label>
+		<span>小标题 :</span>
+		<input id="subtitle" type="text" name="subtitle" <#if book??>value="${book.subtitle!}"</#if> placeholder="可填可不填" />
+		</label>
+		<label>
+		<span>出版日 :</span>
+		<input id="pubdate" type="text" name="pubdate" <#if book??>value="${book.pubdate!}"</#if> placeholder="例:2015-2-28"  />
+		</label>
+		<label>
+		<span>作者 :</span>
+		<input id="author" type="text" name="author" <#if book??>value="${book.author!}"</#if> placeholder="请填写作者,如有多个,用逗号隔开" ></textarea>
+		</label>
+		<label>
+		<span>概要 :</span>
+		<textarea id="summary" name="summary" <#if book??>value="${book.summary!}"</#if>></textarea>
+		</label>
+		<label>
+		<span style="width: 80%">只能上传单张1M以下的 PNG、JPG、GIF 格式的图片</span>
+		</label>
+		<label>
+		<span>选择封面 :</span>
+		<input type="file" name="file">
+		</label>
+		<label>
+		<span>&nbsp;</span>
+		<@token name="recommendBook"/>
+		<input type="submit" class="button" value="提交" />
+		</label>
+		<#if message?? && message != "">
+		<label>
+		<span style="width: 80%;color: red">提交失败:${message}</span>
+		</label>
+		</#if>
+	</form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ss.service.book.mapper.BookMapper">
+	<resultMap type="ss.facade.book.entity.Book" id="bookResultMap">
+		<result property="uuid" column="UUID"/>
+		<result property="author" column="AUTHOR"/>
+		<result property="image" column="IMAGE"/>
+		<result property="title" column="TITLE"/>
+		<result property="attrs" column="ATTRS"/>
+		<result property="summary" column="SUMMARY"/>
+		<result property="tags" column="TAGS"/>
+		<result property="pubdate" column="PUBDATE"/>
+		<result property="subtitle" column="SUBTITLE"/>
+		<result property="publisher" column="PUBLISHER"/>
+		<result property="uploadType" column="UPLOAD_TYPE"/>
+	</resultMap>
+	
+	<sql id="table_columns">
+		UUID,
+		AUTHOR,
+		IMAGE,
+		TITLE,
+		ATTRS,
+		SUMMARY,
+		TAGS,
+		PUBDATE,
+		SUBTITLE,
+		PUBLISHER,
+		UPLOAD_TYPE
+    </sql>
+    <sql id="table_columns_recommend">
+		b.UUID,
+		AUTHOR,
+		IMAGE,
+		TITLE,
+		ATTRS,
+		SUMMARY,
+		TAGS,
+		PUBDATE,
+		SUBTITLE,
+		PUBLISHER,
+		UPLOAD_TYPE
+    </sql>
+	<sql id="entity_properties">
+		#{uuid},
+		#{author},
+		#{image},
+		#{title},
+		#{attrs},
+		#{summary},
+		#{tags},
+		#{pubdate},
+		#{subtitle},
+		#{publisher},
+		#{uploadType}
+	</sql>
+
+    <!-- 使用like用法：columnName like concat('%',#{columnName},'%') -->
+    <sql id="page_where">
+        <trim prefix="where" prefixOverrides="and | or ">
+            <if test="uuid != null and uuid != ''">and UUID = #{uuid}</if>
+            <if test="author != null and author != ''">and AUTHOR = #{author}</if>
+            <if test="image != null and image != ''">and IMAGE = #{image}</if>
+            <if test="title != null and title != ''">and TITLE like concat('%',#{title },'%')</if>
+            <if test="attrs != null and attrs != ''">and ATTRS = #{attrs}</if>
+            <if test="summary != null and summary != ''">and SUMMARY = #{summary}</if>
+            <if test="tags != null and tags != ''">and TAGS = #{tags}</if>
+            <if test="pubdate != null and pubdate != ''">and PUBDATE = #{pubdate}</if>
+            <if test="subtitle != null and subtitle != ''">and SUBTITLE = #{subtitle}</if>
+            <if test="publisher != null and publisher != ''">and PUBLISHER = #{publisher}</if>
+            <if test="uploadType != null and uploadType != ''">and UPLOAD_TYPE = #{uploadType}</if>
+        </trim>
+        <if test="page != null and page.sort!=null and page.sort!=''">
+        	order by ${page.sort} ${page.order}
+        </if>
+    </sql>
+
+	<insert id="insert" parameterType="ss.facade.book.entity.Book">
+		insert into book( <include refid="table_columns" /> ) 
+		values ( <include refid="entity_properties" /> )
+	</insert>
+	
+    <select id="findPageData" resultMap="bookResultMap">
+        select <include refid="table_columns" />
+        from book
+        <include refid="page_where" />
+	</select>
+	
+	<select id="findRecommendList" resultMap="bookResultMap">
+        select <include refid="table_columns_recommend" />
+        from book b left join recommend_book r on b.uuid = r.book_uuid 
+        where r.user_uuid = #{userUuid} 
+        <if test="page != null and page.sort!=null and page.sort!=''">
+        	order by ${page.sort} ${page.order}
+        </if>
+	</select>
+	
+	<select id="get" resultMap="bookResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from book
+		where uuid = #{uuid}
+	</select>
+    
+
+</mapper>

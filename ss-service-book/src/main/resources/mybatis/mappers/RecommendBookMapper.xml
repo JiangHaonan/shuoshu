@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ss.service.book.mapper.RecommendBookMapper">
+	<resultMap type="ss.facade.book.entity.RecommendBook" id="recommendBookResultMap">
+		<result property="uuid" column="UUID"/>
+		<result property="bookUuid" column="BOOK_UUID"/>
+		<result property="userUuid" column="USER_UUID"/>
+	</resultMap>
+	
+	<sql id="table_columns">
+		UUID,
+		BOOK_UUID,
+		USER_UUID
+    </sql>
+	<sql id="entity_properties">
+		#{uuid},
+		#{bookUuid},
+		#{userUuid}
+	</sql>
+
+    <!-- 使用like用法：columnName like concat('%',#{columnName},'%') -->
+    <sql id="page_where">
+        <trim prefix="where" prefixOverrides="and | or ">
+            <if test="uuid != null and uuid != ''">and UUID = #{uuid}</if>
+            <if test="bookUuid != null and bookUuid != ''">and BOOK_UUID = #{bookUuid}</if>
+            <if test="userUuid != null and userUuid != ''">and USER_UUID = #{userUuid}</if>
+        </trim>
+        <if test="page != null and page.sort!=null and page.sort!=''">
+        	order by ${page.sort} ${page.order}
+        </if>
+    </sql>
+
+    <insert id="insert" parameterType="ss.facade.book.entity.RecommendBook">
+		insert into recommend_book( <include refid="table_columns" /> ) 
+		values ( <include refid="entity_properties" /> )
+	</insert>
+    
+
+</mapper>

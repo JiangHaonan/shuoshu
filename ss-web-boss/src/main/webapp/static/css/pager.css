@@ -1,0 +1,231 @@
+﻿#kkpager{
+	text-align: right;
+	clear:both;
+	height:10px;
+	line-height:10px;
+	margin-top:20px;
+	color:#999;
+	font-size:12px;
+	margin-bottom:100px;
+}
+#kkpager a{
+	border-radius: 5px;
+	margin:0 3px;
+	font-size:10px;
+	border:1px solid #999;
+	background-color:#FFF;
+	color:#999;
+	text-decoration:none;
+	width:20px;
+	display:inline-block;
+	text-align:center;
+	font-family:arial;
+}
+#kkpager a:hover{
+	text-decoration:none;
+}
+#kkpager span{
+	font-size:12px;
+	border-radius: 20px;
+	width:20px;
+	display:inline-block;
+	text-align:center;
+}
+#kkpager span.disabled{
+	margin:0 3px;
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	border:1px solid #999;
+	background-color:#FFF;
+	color:#999;
+	cursor:default;
+}
+#kkpager a b,#kkpager a.disabled{
+	cursor:default;
+}
+#kkpager span.curr{
+	margin:0 3px;
+	font-size:10px;
+	color: #fff;
+	border:1px solid #999;
+	background-color:#999;
+	font-family:arial;
+}
+#kkpager a.curr{
+	margin:0 3px;
+	font-size:10px;
+	color: #fff;
+	border:1px solid #999;
+	background-color:#999;
+	font-family:arial;
+}
+#kkpager a:hover{
+	color: #fff;
+	border:1px solid #999;
+	background-color:#999;
+}
+#kkpager span.normalsize{
+	font-size:12px;
+}
+#kkpager_gopage_wrap{
+	display:inline-block;
+	width:44px;
+	height:18px;
+	border:1px solid #999;
+	margin:0px 1px;
+	padding:0px;
+	position:relative;
+	left:0px;
+	top:5px;
+}
+#kkpager_btn_go {
+	cursor: pointer;
+	width:44px;
+	height:20px;
+	line-height:20px;
+	padding:0px;
+	font-family:"Microsoft YaHei";
+	text-align:center;
+	border:0px;
+	background-color:#d71317;
+	color:#FFF;
+	position:absolute;
+	left:0px;
+	top:-1px;
+	display:none;
+}
+#kkpager_btn_go_input{
+	width:42px;
+	height:16px;
+	text-align:center;
+	border:0px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	outline:none;
+	padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.kkpager{
+	text-align: right;
+	clear:both;
+	height:20px;
+	line-height:20px;
+	margin-top:20px;
+	color:#999;
+	font-size:12px;
+	font-family:arial;
+}
+.kkpager a{
+	border-radius: 20px;
+	margin:0 3px;
+	font-size:10px;
+	border:1px solid #999;
+	background-color:#FFF;
+	color:#999;
+	text-decoration:none;
+	width:20px;
+	display:inline-block;
+	text-align:center;
+}
+
+.kkpager a:hover{
+	text-decoration:none;
+}
+.kkpager span{
+	font-size:12px;
+	border-radius: 20px;
+	width:20px;
+	display:inline-block;
+	text-align:center;
+}
+.kkpager span.disabled{
+	margin:0 3px;
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	border:1px solid #999;
+	background-color:#FFF;
+	color:#999;
+	font-weight:bold;
+	cursor:default;
+}
+.kkpager a b,.kkpager a.disabled{
+	cursor:default;
+}
+.kkpager span.curr{
+	margin:0 3px;
+	font-size:10px;
+	color: #fff;
+	border:1px solid #999;
+	background-color:#999;
+}
+.kkpager a.curr{
+	margin:0 3px;
+	font-size:10px;
+	color: #fff;
+	border:1px solid #999;
+	background-color:#999;
+}
+.kkpager a:hover{
+	color: #fff;
+	border:1px solid #999;
+	background-color:#999;
+}
+.kkpager span.normalsize{
+	font-size:12px;
+}
+.kkpager_gopage_wrap{
+	display:inline-block;
+	width:44px;
+	height:18px;
+	border:1px solid #999;
+	margin:0px 1px;
+	padding:0px;
+	position:relative;
+	left:0px;
+	top:5px;
+}
+.kkpager_btn_go {
+	cursor: pointer;
+	width:44px;
+	height:20px;
+	line-height:20px;
+	padding:0px;
+	font-family:"Microsoft YaHei";
+	text-align:center;
+	border:0px;
+	background-color:#d71317;
+	color:#FFF;
+	position:absolute;
+	left:0px;
+	top:-1px;
+	display:none;
+}
+.kkpager_btn_go_input{
+	width:42px;
+	height:16px;
+	text-align:center;
+	border:0px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	outline:none;
+	padding: 0;
+}

@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+	<groupId>ss.parent</groupId>
+	<artifactId>ss-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<relativePath>../ss-parent</relativePath>
+  </parent>
+  
+  <groupId>ss.common</groupId>
+  <artifactId>ss-common</artifactId>
+  <packaging>jar</packaging>
+  <version>${ss-common.version}</version>
+  
+  <name>ss-common</name>
+  <url>http://maven.apache.org</url>
+  <build>
+    <finalName>ss-common</finalName>
+  </build>
+</project>

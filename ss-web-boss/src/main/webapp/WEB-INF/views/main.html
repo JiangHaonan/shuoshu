@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<#include "resource.html">
+<link href="../../static/css/reset.css" rel="stylesheet" type="text/css"/>
+<link href="../../static/css/index.css" rel="stylesheet" type="text/css"/>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="top_line">
+	  <div class="top_heart">
+		<ul style="list-style-type:none;">
+            	<li style="float:left"><a href="/index.html">说书</a></li>
+            	<#if session_user??>
+            	<li style="float:right"><a href="/user/logout.html">退出登录</a></li>
+            	<li style="float:right; margin-right:20px"><a href="/member/main.html">进入个人中心</a></li>
+            	<li style="float:right; margin-right:20px">你好，${session_user.username}</li>
+                <#else>
+                <li style="float:right"><a href="/user/login.html">登录</a></li>
+                <li style="float:right; margin-right:20px"><a href="/user/register.html">注册</a></li>
+                </#if>
+          </ul>
+		</div>
+	</div>
+	<div class="top_heart" style="padding-top: 20px">
+		<li style="list-style: none;float:left;padding-top: 5px">我推荐的书:</li>
+		<input type="button" class="sub_button" onclick="window.location.href='/member/recommendBook.html'" value="推荐新书"/>
+		<input type="button" class="sub_button" style="float:right;margin-right: 100px" value="绑定"/>
+		<input type="email" style="float:right;height: 25px" placeholder="（功能尚未开发）" readonly="readonly"/>
+		<li style="list-style: none;float:right;padding-top: 5px">绑定邮箱(绑定后为您定时推送新书):</li>
+	</div>
+	<div class="recommend_list">
+	    	书本分页区域,ajax获取数据
+	</div>
+	<div id="kkpager" style="text-align: center"></div>
+	<script>
+		seajs.use("/static/js/member/recommendList.js");
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+	<groupId>ss.parent</groupId>
+	<artifactId>ss-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<relativePath>../ss-parent</relativePath>
+  </parent>
+  
+  <groupId>ss.web.boss</groupId>
+  <artifactId>ss-web-boss</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <name>ss-web-boss</name>
+  <url>http://maven.apache.org</url>
+  
+  <dependencies>
+    <dependency>
+      <groupId>ss.facade.user</groupId>
+      <artifactId>ss-facade-user</artifactId>
+      <version>${ss-facade-user.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>ss.facade.book</groupId>
+      <artifactId>ss-facade-book</artifactId>
+      <version>${ss-facade-book.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>ss.common.config</groupId>
+      <artifactId>ss-common-config</artifactId>
+      <version>${ss-common-config.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>ss.common.web</groupId>
+      <artifactId>ss-common-web</artifactId>
+      <version>${ss-common-web.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>ss.common</groupId>
+      <artifactId>ss-common</artifactId>
+      <version>${ss-common.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>ss-web-boss</finalName>
+  </build>
+  <properties>  
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+  </properties>  
+</project>

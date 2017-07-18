@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ss.service.user.mapper.UserMapper">
+	<resultMap type="ss.facade.user.entity.User" id="userResultMap">
+		<result property="uuid" column="UUID"/>
+		<result property="username" column="USERNAME"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="mobilePhone" column="MOBILE_PHONE"/>
+		<result property="addTime" column="ADD_TIME"/>
+	</resultMap>
+	
+	<sql id="table_columns">
+		UUID,
+		USERNAME,
+		PASSWORD,
+		EMAIL,
+		MOBILE_PHONE,
+		ADD_TIME
+    </sql>
+	<sql id="entity_properties">
+		#{uuid},
+		#{username},
+		#{password},
+		#{email},
+		#{mobilePhone},
+		#{addTime}
+	</sql>
+
+    <!-- 使用like用法：columnName like concat('%',#{columnName},'%') -->
+    <sql id="page_where">
+        <trim prefix="where" prefixOverrides="and | or ">
+            <if test="uuid != null and uuid != ''">and UUID = #{uuid}</if>
+            <if test="username != null and username != ''">and USERNAME = #{username}</if>
+            <if test="password != null and password != ''">and PASSWORD = #{password}</if>
+            <if test="email != null and email != ''">and EMAIL = #{email}</if>
+            <if test="mobilePhone != null and mobilePhone != ''">and MOBILE_PHONE = #{mobilePhone}</if>
+            <if test="addTime != null">and ADD_TIME = #{addTime}</if>
+        </trim>
+        <if test="page != null and page.sort!=null and page.sort!=''">
+        	order by ${page.sort} ${page.order}
+        </if>
+    </sql>
+
+	<insert id="insert" parameterType="ss.facade.user.entity.User">
+		insert into user( <include refid="table_columns" /> ) 
+		values ( <include refid="entity_properties" /> )
+	</insert>
+	
+    <select id="findAll" resultMap="userResultMap">
+        select <include refid="table_columns" />
+        from user
+    </select>
+
+    <select id="get" resultMap="userResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from user
+		where uuid = #{uuid}
+	</select>
+	
+	<select id="getByUsername" resultMap="userResultMap" parameterType="String">
+        select <include refid="table_columns" />
+		from user
+        where username = #{username}
+    </select>
+    
+	<select id="getByEmail" resultMap="userResultMap" parameterType="String">
+        select <include refid="table_columns" />
+		from user
+        where email = #{email}
+    </select>
+	
+</mapper>

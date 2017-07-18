@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<#include "resource.html">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="top_line">
+	  <div class="top_heart">
+		<ul style="list-style-type:none;">
+            	<li style="float:left">说书</li>
+            	<#if session_user??>
+            	<li style="float:right"><a href="/user/logout.html">退出登录</a></li>
+            	<li style="float:right; margin-right:20px"><a href="/member/main.html">进入个人中心</a></li>
+            	<li style="float:right; margin-right:20px">你好，${session_user.username}</li>
+                <#else>
+                <li style="float:right"><a href="/user/login.html">登录</a></li>
+                <li style="float:right; margin-right:20px"><a href="/user/register.html">注册</a></li>
+                </#if>
+          </ul>
+		</div>
+	</div>
+	<#if book??>
+	<div style="text-align: center;margin: 0 auto;width: 500px">
+		<h1>说书之用户推荐书本之"${book.title}"
+		</h1>
+		</br>
+		</br>
+		<ul>
+		<li style="list-style: none;float: left">书名:${book.title!}</li>
+		</br>
+		</br>
+		</ul>
+		<ul>
+		<li style="list-style: none;float: left">小标题:${book.subtitle!}</li>
+		</br>
+		</br>
+		</ul>
+		<ul>
+		<li style="list-style: none;float: left">出版日:${book.pubdate}</li>
+		</br>
+		</br>
+		</ul>
+		<ul>
+		<li style="list-style: none;float: left">作者:${book.author}</li>
+		</br>
+		</br>
+		</ul>
+		<ul>
+		<li style="list-style: none;float: left">概要:${book.summary}</li>
+		</br>
+		</br>
+		</ul>
+		<ul>
+		<input type="button" class="grey_button" value="点击返回上一页" onclick="history.go(-1)"/>
+		</ul>
+	</div>
+	
+	</#if>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+	<groupId>ss.parent</groupId>
+	<artifactId>ss-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<relativePath>../ss-parent</relativePath>
+  </parent>
+  
+  <groupId>ss.facade.book</groupId>
+  <artifactId>ss-facade-book</artifactId>
+  <packaging>jar</packaging>
+  <version>${ss-facade-book.version}</version>
+  
+  <name>ss-facade-book</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>ss.common</groupId>
+  	  <artifactId>ss-common</artifactId>
+	  <version>${ss-common.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ss.facade.user</groupId>
+  	  <artifactId>ss-facade-user</artifactId>
+	  <version>${ss-facade-user.version}</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <finalName>ss-facade-book</finalName>
+  </build>
+</project>
